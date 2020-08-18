@@ -1,0 +1,37 @@
+---
+title: "Homework#2RG"
+author: "Ryan Gandolfi"
+date: "8/10/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Homework#2
+
+For this document I will be embedding the data from the source provided by Professor Rice in Homework#1. I am choosing to work with the SCDB dataset. This dataset stems from a ".csv file provided by Professor Rice in Homework#1. SCDB stands for the Supreme Court Database Code Book. 
+
+```{r}
+library(tidyverse)
+
+scdbData <- read.delim("scdb.csv", sep = ",", header= TRUE)
+
+head(scdbData)
+```
+
+## Retrieving Basic Information
+
+As stated in the assignment I am aiming to retreive the number of observations in the Dataset as well as the number of variables.
+I chose to get the number of observations(rows) by using the "dim" function to get the dimensions of the Dataset. 
+To get the number of variables in the Dataset I went ahead and used the same function. Using the "dim" function retrieves both the rows and columns within a Dataset.
+
+```{r}
+dim(scdbData)
+
+```
+
+## Explination
+
+Given the retrieved dimensions of 8966 x 53 we can understand that this Dataframe is 8966 rows(observations) by 53 columns(variables). You can also use the functions "nrow" and "ncol" respectively to get individual values

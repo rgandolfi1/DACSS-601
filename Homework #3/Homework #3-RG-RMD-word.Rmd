@@ -1,0 +1,35 @@
+---
+title: "Homework#3RG"
+author: "Ryan Gandolfi"
+date: "8/12/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Explanation of Assignment 
+
+For this homework I continued to use the SCDB data. After combing through the column names using `colnames(scdbData)` and manually looking at the google sheet document I decided to show a relationship between the amount of cases per "caseOriginState". After looking in the codebook I found that in this case, "caseOriginState" corresponds to the state in which the case originated. This plot aims to show the reader which of state codes have higher case rates. 
+
+```{r}
+library(tidyverse)
+scdbData <- read.delim("scdb.csv", sep = ",", header= TRUE)
+head(scdbData)
+colnames(scdbData)
+```
+
+## Creating The Visualization
+
+At this point, all of the data is incorporated properly and we can go ahead and use ggplot to produce the visualization `ggplot(scdbData, aes(`caseOriginState`)) + geom_bar( )` . This just produces a general bar graph from which we can manipulate to our needs. The x axis corresponds to the origin state code.
+
+. By using `p <- ggplot(scdbData, aes(`caseOriginState`)) + geom_bar( )` we can set the function of creating the graph equal to the variable "p" which allows us to add manipulations to it more easily. The first of which done is `p + scale_x_continuous(limit = c(0, 64))` which makes the "X-axis" only show up to 64 values. 
+
+#(Ignore this it refers to my original script using "jurisdiction") However, the spacing was not adequate therefore I re-named the new function to "z" `z  <- p + scale_x_continuous(limit = c(0, 10))` in order to add the spacing to the bar graph. The spacing I felt would look best is showing every number from 1-10 on the "x-axis". To do this I ran `z + scale_x_continuous(breaks = c(0,1,2,3,4,5,6,7,8,9,10))` 
+
+```{r}
+ggplot(scdbData, aes(`caseOriginState`)) + geom_bar( )
+p <- ggplot(scdbData, aes(`caseOriginState`)) + geom_bar( )       
+p + scale_x_continuous(limit = c(0, 64))
+```
